@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="RentCarMVC02">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="cos-26Dec2008.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/cos-26Dec2008/cos-26Dec2008">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/jstl-1.2/jstl-1.2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-8.0.15.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/mysql-connector-java-8.0.15/mysql-connector-java-8.0.15">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="RentCarMVC02"/>
+        <property name="java-output-path" value="/RentCarMVC02/build/classes"/>
+    </wb-module>
+</project-modules>
