@@ -1,6 +1,7 @@
 package com.basic.rentcar.frontController;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,9 +27,14 @@ public class RentcarFrontController extends HttpServlet {
 		Controller controller = mapping.getController(command);
 		String nextPage = controller.requestHandler(req, resp);
 		
+		resp.setContentType("text/html; charset=utf-8");
+		PrintWriter writer = resp.getWriter();
+		
 		if(nextPage!=null) {
-			if(nextPage.indexOf("red:")!=-1) {
-				resp.sendRedirect(nextPage.substring(4));
+			if(nextPage.indexOf("<script>")!=-1) {
+				writer.println(nextPage);	
+			}else if(nextPage.indexOf("re:")!=-1) {
+				resp.sendRedirect(nextPage.substring(3)); 
 			}else {
 				RequestDispatcher dis = req.getRequestDispatcher(ViewResolver.makeView(nextPage));
 				dis.forward(req, resp);

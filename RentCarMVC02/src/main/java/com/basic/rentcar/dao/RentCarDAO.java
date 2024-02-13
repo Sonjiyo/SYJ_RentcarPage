@@ -1,5 +1,97 @@
 package com.basic.rentcar.dao;
 
-public class RentCarDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.basic.rentcar.util.DBUtil;
+import com.basic.rentcar.vo.Rentcar;
+
+public class RentCarDAO {
+	private RentCarDAO() {}
+	
+	
+	private static RentCarDAO instance;
+
+	public static RentCarDAO getInstance() {
+		if(instance==null) instance = new RentCarDAO();
+		return instance;
+	}
+	
+	public ArrayList<Rentcar> getRentCarList(){
+		ArrayList<Rentcar> list = new ArrayList<Rentcar>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "select * from rentcar";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int num =rs.getInt("num");
+				String name = rs.getString("name");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				int usepeople = rs.getInt("usepeople");
+				int total_qty = rs.getInt("total_qty");
+				String company = rs.getString("company");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+
+				Rentcar r = new Rentcar(num, name, category, price, usepeople, total_qty, company, img, info);
+				
+				list.add(r);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<Rentcar> getCategoryRentCarList(int cate){
+		ArrayList<Rentcar> list = new ArrayList<Rentcar>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "select * from rentcar where category=?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, cate);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int num =rs.getInt("num");
+				String name = rs.getString("name");
+				int category = rs.getInt("category");
+				int price = rs.getInt("price");
+				int usepeople = rs.getInt("usepeople");
+				int total_qty = rs.getInt("total_qty");
+				String company = rs.getString("company");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+
+				Rentcar r = new Rentcar(num, name, category, price, usepeople, total_qty, company, img, info);
+				
+				list.add(r);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+		
+		return list;
+	}
 }

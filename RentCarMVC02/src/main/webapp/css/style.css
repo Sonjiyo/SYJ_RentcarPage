@@ -1,14 +1,23 @@
 @charset "UTF-8";
-*{margin:0; padding:0; box-sizing: border-box;}
+*{margin:0; padding:0; box-sizing: border-box;text-align: center;}
+ul{padding: 0;margin:0;}
 li{list-style: none;}
 a{text-decoration: none; color:#222;}
 .mainContent{
+	width: 1000px;
 	margin:0 auto;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 }
-.mainContent li{width: 100%;}
-.header{width: 100%; display: flex; justify-content: space-around;}
-.header ul{display: flex;}
+.mainContent>li{width: 100%;}
+.logo{
+	display: block;
+	width: 150px;
+	height: 100px;
+	background: url("../img/rent_logo.jpg") no-repeat left/contain;
+	cursor: pointer;
+}
+img{width: 100%;}
+.bg-dark a{color:white;}

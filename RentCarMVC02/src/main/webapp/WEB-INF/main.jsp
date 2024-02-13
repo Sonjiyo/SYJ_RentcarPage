@@ -8,21 +8,19 @@
 <title>Rentcar</title>
 </head>
 <body>
-	<div align="center" style="width:1000px">
-		<ul class="mainContent">
-		<!-- header -->
-			<li>
-				<jsp:include page= "parts/header.jsp"/>
-			</li>
-		<!-- content -->
-			<li>
-				<jsp:include page="${content}"/>
-			</li>
-		<!-- footer -->
-			<li>
-				<jsp:include page="${ctx}/WEB-INF/parts/footer.jsp"/>
-			</li>
-		</ul>
-	</div>
+	<ul class="mainContent">
+	<!-- header -->
+		<li>
+			<jsp:include page="parts/header.jsp"/>
+		</li>
+	<!-- content -->
+		<li>
+			<jsp:include page="${content}"/>
+		</li>
+	<!-- footer -->
+		<li>
+			<jsp:include page="parts/footer.jsp"/>
+		</li>
+	</ul>
 </body>
 </html>
