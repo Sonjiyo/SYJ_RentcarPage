@@ -1,1 +1,14 @@
 @charset "UTF-8";
+*{margin:0; padding:0; box-sizing: border-box;}
+li{list-style: none;}
+a{text-decoration: none; color:#222;}
+.mainContent{
+	margin:0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.mainContent li{width: 100%;}
+.header{width: 100%; display: flex; justify-content: space-around;}
+.header ul{display: flex;}
