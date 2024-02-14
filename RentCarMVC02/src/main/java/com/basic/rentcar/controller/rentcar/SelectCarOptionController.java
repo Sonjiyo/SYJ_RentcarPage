@@ -6,16 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.vo.Rentcar;
 
 public class SelectCarOptionController implements Controller{
 
 	@Override
 	public String requestHandler(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int num = Integer.parseInt(req.getParameter("no"));
+		int cnt = Integer.parseInt(req.getParameter("cnt"));
 		
-		return null;
+		req.setAttribute("cnt", cnt);
+		req.setAttribute("content", "rentcar/carOption.jsp");
+		return "main";
 	}
 
 }

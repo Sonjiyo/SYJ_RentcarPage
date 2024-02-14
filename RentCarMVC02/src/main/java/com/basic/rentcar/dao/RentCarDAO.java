@@ -95,6 +95,7 @@ public class RentCarDAO {
 		return list;
 	}
 	
+
 	public Rentcar getOneRentCar(int num) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -125,5 +126,23 @@ public class RentCarDAO {
 			DBUtil.dbClose(conn, ps, rs);
 		}
 		return null;
+	}
+	
+	public void updateQty(int total_qty, int no) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "update rentcar set total_qty = total_qty -? where no=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, total_qty);
+			ps.setInt(2, no);
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
 	}
 }

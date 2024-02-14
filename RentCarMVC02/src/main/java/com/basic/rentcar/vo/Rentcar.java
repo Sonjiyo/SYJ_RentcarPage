@@ -10,6 +10,7 @@ public class Rentcar {
 	private String company;	//차량 회사 정보
 	private String img;		//차량 이미지
 	private String info;	//차량 정보
+
 	public int getNo() {
 		return no;
 	}

@@ -11,6 +11,11 @@ public class Reservation{
 	private int usewifi;	//인터넷 여부
 	private int usenavi;	//네비게이션 대여 여부
 	private int useseat;	//베이비시트 적용 여부
+	private int totalPrice; //대여한 금액
+	
+	public int getTotalPrice() {
+		return totalPrice;
+	}
 	public int getReserve_seq() {
 		return reserve_seq;
 	}
@@ -42,7 +47,7 @@ public class Reservation{
 		return useseat;
 	}
 	public Reservation(int reserve_seq, int no, String id, int qty, int dday, String rday, int usein, int usewifi,
-			int usenavi, int useseat) {
+			int usenavi, int useseat, int totalPrice) {
 		this.reserve_seq = reserve_seq;
 		this.no = no;
 		this.id = id;
@@ -53,6 +58,7 @@ public class Reservation{
 		this.usewifi = usewifi;
 		this.usenavi = usenavi;
 		this.useseat = useseat;
+		this.totalPrice = totalPrice;
 	}
 	
 	

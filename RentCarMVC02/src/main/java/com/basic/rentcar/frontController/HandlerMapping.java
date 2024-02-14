@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import com.basic.rentcar.controller.rentcar.CarInfoController;
 import com.basic.rentcar.controller.rentcar.CarListController;
+import com.basic.rentcar.controller.rentcar.ReservateCarController;
+import com.basic.rentcar.controller.rentcar.SelectCarOptionController;
+import com.basic.rentcar.controller.rentcar.UserReserveListController;
 import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
 import com.basic.rentcar.controller.user.LogoutController;
@@ -21,6 +24,9 @@ public class HandlerMapping {
 		mappings.put("/logout.do", new LogoutController());
 		mappings.put("/rentcarList.do", new CarListController());
 		mappings.put("/rentcarInfo.do", new CarInfoController());
+		mappings.put("/carOption.do", new SelectCarOptionController());
+		mappings.put("/reserveView.do", new ReservateCarController());
+		mappings.put("/userReserveList.do", new UserReserveListController());
 	}
 	
 	public Controller getController(String key) {

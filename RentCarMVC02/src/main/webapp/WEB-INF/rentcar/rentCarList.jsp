@@ -6,14 +6,18 @@
 <input type="radio" name="category" class="btn-check" id="all" value="all" autocomplete="off" 
 	<c:if test="${category==null}">checked="checked"</c:if>>
 <label for="all" class="btn btn-outline-dark">전체보기</label>
+
 <input type="radio" name="category" class="btn-check" id="small" value="1" autocomplete="off"
 	<c:if test="${category == 1 }">checked="checked"</c:if>>
+	
 <label for="small" class="btn btn-outline-secondary">소형</label>
 <input type="radio" name="category" class="btn-check" id="middle" value="2" autocomplete="off"
 	<c:if test="${category == 2 }">checked="checked"</c:if>>
+	
 <label for="middle" class="btn btn-outline-secondary">중형</label>
 <input type="radio" name="category" class="btn-check" id="big" value="3" autocomplete="off"
 	<c:if test="${category == 3 }">checked="checked"</c:if>>
+	
 <label for="big" class="btn btn-outline-secondary">대형</label>
 <button class="btn btn-warning ms-3">검색</button>
 </form>

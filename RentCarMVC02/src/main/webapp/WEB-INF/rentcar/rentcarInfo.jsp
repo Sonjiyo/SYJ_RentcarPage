@@ -46,14 +46,14 @@
 	<h3 class="my-4 text-end">로그인 후 이용가능합니다</h3>
 </c:if>
 <c:if test="${vo.total_qty!=0 && log!=null}">
-<form action="">
+<form action="${ctx }/carOption.do" method="post">
 <ul class="my-4" style="display:flex;justify-content:flex-end;">
 <li class="me-5" style="display:flex;align-items:center;">
 	<span class="mx-3 fs-4 fw-medium">대여할 차량 수</span>
-	<div class="btn btn-outline-secondary" onclick="decrease()">-</div>
+	<div class="btn btn-outline-secondary fw-bold" onclick="decrease()">-</div>
 	<span class="mx-3 fs-4 fw-medium" id="itemCnt"></span>
-	<input type="hidden" name="num" id="itemInput" value="0">
-	<div class="btn btn-outline-secondary" onclick="increase()">+</div>
+	<input type="hidden" name="cnt" id="itemInput" value="0">
+	<div class="btn btn-outline-secondary fw-bold" onclick="increase()">+</div>
 </li>
 <li>
 	<button class="btn btn-warning">예약하기</button>

@@ -18,7 +18,7 @@
 </ul>
 <ul class="navbar navbar-expand-lg bg-dark p-3 shadow-sm">
 	<li class="nav-item"><a href="${ctx}/rentcarList.do" class="nav-link link-warning">예약하기</a></li>
-	<li class="nav-item"><a href="" class="nav-link <c:if test="${log==null}">disabled</c:if> link-warning" <c:if test="${log==null}">aria-disabled="true"</c:if>>예약확인</a></li>
+	<li class="nav-item"><a href="${ctx}/userReserveList.do" class="nav-link <c:if test="${log==null}">disabled</c:if> link-warning" <c:if test="${log==null}">aria-disabled="true"</c:if>>예약확인</a></li>
 	<li class="nav-item"><a href="" class="nav-link link-warning">자유게시판</a></li>
 	<li class="nav-item"><a href="" class="nav-link link-warning">이벤트</a></li>
 	<li class="nav-item"><a href="" class="nav-link link-warning">고객센터</a></li>

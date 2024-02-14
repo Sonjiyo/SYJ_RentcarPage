@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.basic.rentcar.dao.RentCarDAO;
 import com.basic.rentcar.frontController.Controller;
@@ -18,8 +19,8 @@ public class CarInfoController implements Controller{
 		int num = Integer.parseInt(req.getParameter("no"));
 		
 		Rentcar rentcar = RentCarDAO.getInstance().getOneRentCar(num);
-		req.setAttribute("vo", rentcar);
-		
+		HttpSession session = req.getSession();
+		session.setAttribute("vo", rentcar);
 		req.setAttribute("content", "rentcar/rentcarInfo.jsp");
 		return "main";
 	}
