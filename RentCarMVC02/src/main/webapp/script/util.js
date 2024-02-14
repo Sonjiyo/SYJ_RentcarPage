@@ -9,4 +9,4 @@ function sendFetchRequest(url, method, query, successCallback) {
       .then(response => response.text())
       .then(data => successCallback(data))
       .catch(error => console.error('Error:', error));
-  }
+}

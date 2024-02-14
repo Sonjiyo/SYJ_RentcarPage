@@ -18,12 +18,15 @@ public class CarListController implements Controller{
 			throws ServletException, IOException {
 		ArrayList<Rentcar> list = new ArrayList<Rentcar>();
 		
-		if(req.getParameter("category")==null) {
+		if(req.getParameter("category")==null || req.getParameter("category").equals("all")) {
 			list =  RentCarDAO.getInstance().getRentCarList();
+
 		}else {
 			int category = Integer.parseInt(req.getParameter("category"));
+			req.setAttribute("category", category);
 			list =  RentCarDAO.getInstance().getCategoryRentCarList(category);
 		}
+		
 		req.setAttribute("size", list.size());
 		req.setAttribute("list", list);
 		req.setAttribute("content", "rentcar/rentCarList.jsp");
