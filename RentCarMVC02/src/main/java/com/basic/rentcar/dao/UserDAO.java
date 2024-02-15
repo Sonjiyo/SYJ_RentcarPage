@@ -123,4 +123,44 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public void updateUser(String id, String hobby, String job, int age, String info) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "update member set hobby=?, job=?, age=?, info=? where id=?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, hobby);
+			ps.setString(2, job);
+			ps.setInt(3, age);
+			ps.setString(4, info);
+			ps.setString(5, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
+	
+	public void deleteUser(String id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "delete from member where id=?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
 }

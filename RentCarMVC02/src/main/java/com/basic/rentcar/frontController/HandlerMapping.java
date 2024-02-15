@@ -5,8 +5,10 @@ import java.util.HashMap;
 import com.basic.rentcar.controller.rentcar.CarInfoController;
 import com.basic.rentcar.controller.rentcar.CarListController;
 import com.basic.rentcar.controller.rentcar.DeleteResController;
+import com.basic.rentcar.controller.rentcar.InsertCarController;
 import com.basic.rentcar.controller.rentcar.ReservateCarController;
 import com.basic.rentcar.controller.rentcar.SelectCarOptionController;
+import com.basic.rentcar.controller.rentcar.UploadCarImgController;
 import com.basic.rentcar.controller.rentcar.UserReserveListController;
 import com.basic.rentcar.controller.user.DeleteUserController;
 import com.basic.rentcar.controller.user.JoinUserController;
@@ -37,6 +39,8 @@ public class HandlerMapping {
 		mappings.put("/userInfo.do", new UserInfoController());
 		mappings.put("/deleteUser.do", new DeleteUserController());
 		mappings.put("/updateUser.do", new UpdateUserController());
+		mappings.put("/insertCar.do", new InsertCarController());
+		mappings.put("/uploadCarImg.do", new UploadCarImgController());
 	}
 	
 	public Controller getController(String key) {

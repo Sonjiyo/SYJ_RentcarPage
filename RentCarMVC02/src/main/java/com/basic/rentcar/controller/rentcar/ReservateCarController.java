@@ -33,9 +33,8 @@ public class ReservateCarController implements Controller{
 		int usenavi = req.getParameter("usenavi") !=null ? 1 : 0;
 		int useseat = req.getParameter("useseat") !=null ? 1 : 0;
 
-		int totalPrice = qty*(price*dday+(usein==1 ? 10000*qty : 0)
-					+(usewifi==1 ? 10000*qty : 0)+(useseat==1 ? 10000*qty : 0));
-		int optionPrice = (usein==1 ? 10000*qty : 0)+(usewifi==1 ? 10000*qty : 0)+(useseat==1 ? 10000*qty : 0);
+		int totalPrice = qty*(price*dday+usein*10000+usewifi*10000+useseat*10000);
+		int optionPrice = qty*(usein*10000+usewifi*10000+useseat*10000);
 		
 		Reservation re = new Reservation(0, no, id, qty, dday, rday, usein, usewifi, usenavi, useseat, totalPrice);
 		ReservationDAO.getInstance().inputReservation(re);

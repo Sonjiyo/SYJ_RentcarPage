@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file= "../util.jsp" %>
-<h2 class="my-5">회원가입</h2>
-<form action="${ctx}/join.do" method="post">
+<h2 class="my-5">회원정보</h2>
+<form action="${ctx}/updateUser.do" method="post">
 	<table class="table table-bordered w-75 mx-auto">
 		<tr>
 			<th class="p-3 table-dark" style="width:25%">아이디</th>
@@ -42,7 +42,6 @@
 			<input type="radio" name="job" value="생산직" class="form-check-input jobCheck" <c:if test="${vo.job == '생산직'}">checked</c:if>>생산직&nbsp;&nbsp;
 			<input type="radio" name="job" value="기타" class="form-check-input jobCheck" <c:if test="${vo.job == '기타'}">checked</c:if>>기타&nbsp;&nbsp;
 			<input type="radio" name="job" value="무직" class="form-check-input jobCheck" <c:if test="${vo.job == '무직'}">checked</c:if>>무직<br>
-			<label class="job text-danger"></label>
 			</td>
 		</tr>
 		<tr>
@@ -60,7 +59,9 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-			<input type="button" value="회원가입" class="btn btn-dark" onclick="sendForm(form)"></td>
+			<input type="button" value="정보수정" class="btn btn-dark" onclick="sendForm(form, ${vo.pw})">
+			<input type="button" value="회원탈퇴" id="delete" class="btn btn-danger" onclick="deleteUser(form, ${vo.pw}, '${ctx }')"></td>
 		</tr>
 	</table>
 </form>
+<script type="text/javascript" src="${ctx }/script/updateUser.js"></script>

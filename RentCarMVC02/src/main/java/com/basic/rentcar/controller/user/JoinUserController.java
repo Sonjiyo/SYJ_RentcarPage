@@ -26,10 +26,11 @@ public class JoinUserController implements Controller {
 		String tel = req.getParameter("tel");
 		String[] hobbyList = req.getParameterValues("hobby");
 		String hobby= "";
-		for(String h : hobbyList) {
-			hobby+=h+",";
+		for(int i=0; i<hobbyList.length; i++) {
+			hobby+=hobbyList[i]+",";
 		}
-		hobby = hobby.substring(hobby.length()-1);
+		System.out.println(hobby);
+		hobby = hobby.substring(0,hobby.length()-1);
 		String job = req.getParameter("job");
 		int age = Integer.parseInt(req.getParameter("age"));
 		String info = req.getParameter("info");
