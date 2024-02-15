@@ -84,4 +84,21 @@ public class ReservationDAO {
 			DBUtil.dbClose(conn, ps, rs);
 		}
 	}
+	
+	public void deleteResevation(int reserve_seq) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "delete from carreserve where reserve_seq=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, reserve_seq);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
 }

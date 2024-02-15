@@ -1,5 +1,20 @@
 package com.basic.rentcar.controller.rentcar;
 
-public class InsertCarController {
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.basic.rentcar.frontController.Controller;
+
+public class InsertCarController implements Controller{
+
+	@Override
+	public String requestHandler(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		return null;
+	}
 
 }

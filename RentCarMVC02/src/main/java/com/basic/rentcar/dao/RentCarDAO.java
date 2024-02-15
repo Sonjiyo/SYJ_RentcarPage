@@ -128,21 +128,22 @@ public class RentCarDAO {
 		return null;
 	}
 	
-	public void updateQty(int total_qty, int no) {
+	public void updateQty(int qty, int no) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		Connection conn = DBUtil.getConnection();
-		String sql = "update rentcar set total_qty = total_qty -? where no=?";
+		String sql = "update rentcar set total_qty = total_qty +? where no=?";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, total_qty);
+			ps.setInt(1, qty);
 			ps.setInt(2, no);
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			DBUtil.dbClose(conn, ps, rs);
 		}
 	}
+
 }

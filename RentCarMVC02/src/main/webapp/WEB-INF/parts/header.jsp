@@ -7,6 +7,12 @@
 		<ul class="nav nav-pills">
 		<c:if test="${log!=null}">
 			<li class="me-3 nav-item">${log}님 환영합니다</li>
+			<c:if test="${log=='admin' }">
+			<li class="me-3 nav-item"><button class="btn btn-outline-warning" onclick="location.href='${ctx}/userInfo.do'">관리자 메뉴</button></li>
+			</c:if>
+			<c:if test="${log!='admin' }">
+			<li class="me-3 nav-item"><button class="btn btn-outline-warning" onclick="location.href='${ctx}/userInfo.do'">회원정보</button></li>
+			</c:if>
 			<li class="nav-item"><button class="btn btn-outline-danger" onclick="location.href='${ctx}/logout.do'">로그아웃</button></li>
 		</c:if>
 		<c:if test="${log==null}">

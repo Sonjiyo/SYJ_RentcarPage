@@ -24,7 +24,7 @@ public class ReservateCarController implements Controller{
 		int no = ((Rentcar) session.getAttribute("vo")).getNo();
 		int price = ((Rentcar) session.getAttribute("vo")).getPrice();
 		System.out.println(no);
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("log");
 		
 		int dday = Integer.parseInt(req.getParameter("dday"));
 		String rday = req.getParameter("rday");
@@ -40,7 +40,7 @@ public class ReservateCarController implements Controller{
 		Reservation re = new Reservation(0, no, id, qty, dday, rday, usein, usewifi, usenavi, useseat, totalPrice);
 		ReservationDAO.getInstance().inputReservation(re);
 		
-		RentCarDAO.getInstance().updateQty(qty, no);
+		RentCarDAO.getInstance().updateQty((qty*-1), no);
 		
 		req.setAttribute("optionPrice", optionPrice);
 		req.setAttribute("reservation", re);

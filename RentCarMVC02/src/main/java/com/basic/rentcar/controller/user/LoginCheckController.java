@@ -26,9 +26,9 @@ public class LoginCheckController implements Controller{
 		if(UserDAO.getInstance().loginCheck(id, pw)) {
 			HttpSession session = req.getSession();
 			session.setAttribute("log", id);
-			return "<script>console.log('로그인 성공');location.href='"+ctx+"/main.do';</script>";			
+			return "<script>alert('로그인 성공');location.href='"+ctx+"/main.do';</script>";			
 		}else {
-			return "<script>console.log('로그인 실패');location.href='"+ctx+"/main.do';</script>";					
+			return "<script>alert('로그인 실패');location.href='"+ctx+"/main.do';</script>";					
 		}
 	}
 	

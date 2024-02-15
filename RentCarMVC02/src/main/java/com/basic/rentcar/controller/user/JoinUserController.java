@@ -6,7 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.basic.rentcar.dao.UserDAO;
 import com.basic.rentcar.frontController.Controller;
+import com.basic.rentcar.vo.User;
 
 public class JoinUserController implements Controller {
 
@@ -22,12 +24,20 @@ public class JoinUserController implements Controller {
 		String pw = req.getParameter("pw");
 		String email = req.getParameter("email");
 		String tel = req.getParameter("tel");
-		String hobby = req.getParameter("hobby");
+		String[] hobbyList = req.getParameterValues("hobby");
+		String hobby= "";
+		for(String h : hobbyList) {
+			hobby+=h+",";
+		}
+		hobby = hobby.substring(hobby.length()-1);
 		String job = req.getParameter("job");
 		int age = Integer.parseInt(req.getParameter("age"));
 		String info = req.getParameter("info");
 		
-		return "<script>console.log('회원가입 완료');location.href='"+ctx+"/main.do'</script>";
+		User user = new User(0, id, pw, email, tel, hobby, job, age, info);
+		UserDAO.getInstance().joinUser(user);
+		
+		return "<script>alert('회원가입 완료');location.href='"+ctx+"/main.do'</script>";
 	}
 
 }

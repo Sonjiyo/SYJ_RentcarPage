@@ -4,13 +4,18 @@ import java.util.HashMap;
 
 import com.basic.rentcar.controller.rentcar.CarInfoController;
 import com.basic.rentcar.controller.rentcar.CarListController;
+import com.basic.rentcar.controller.rentcar.DeleteResController;
 import com.basic.rentcar.controller.rentcar.ReservateCarController;
 import com.basic.rentcar.controller.rentcar.SelectCarOptionController;
 import com.basic.rentcar.controller.rentcar.UserReserveListController;
+import com.basic.rentcar.controller.user.DeleteUserController;
 import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
 import com.basic.rentcar.controller.user.LogoutController;
 import com.basic.rentcar.controller.user.MainController;
+import com.basic.rentcar.controller.user.UpdateUserController;
+import com.basic.rentcar.controller.user.UserInfoController;
+import com.basic.rentcar.controller.user.VaildateldController;
 
 public class HandlerMapping {
 	private HashMap<String, Controller> mappings;
@@ -27,6 +32,11 @@ public class HandlerMapping {
 		mappings.put("/carOption.do", new SelectCarOptionController());
 		mappings.put("/reserveView.do", new ReservateCarController());
 		mappings.put("/userReserveList.do", new UserReserveListController());
+		mappings.put("/deleteRes.do", new DeleteResController());
+		mappings.put("/idCheck.do", new VaildateldController());
+		mappings.put("/userInfo.do", new UserInfoController());
+		mappings.put("/deleteUser.do", new DeleteUserController());
+		mappings.put("/updateUser.do", new UpdateUserController());
 	}
 	
 	public Controller getController(String key) {

@@ -2,9 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file= "../util.jsp" %>
 <h2 class="my-5">예약 확인</h2>
-<c:forEach var="vo" items="${list}">
+<c:if test="${size==0 }">
+	<h3 class="my-5">예약 내역이 없습니다</h3>
+</c:if>
+<c:if test="${size!=0 }">
 <table class="table table-bordered">
-	<tr>
+	<tr  class="table-dark">
 		<td>이미지</td>
 		<td>이름</td>
 		<td>대여일</td>
@@ -17,30 +20,39 @@
 		<td>네비게이션</td>
 		<td>삭제</td>
 	</tr>
+<c:forEach var="i" begin="0" end="${size==1 ? 0 : size-1}">
 	<tr>
-		<td></td>
-		<td>${vo.no }</td>
-		<td>${vo.rday }</td>
-		<td>${vo.dday }</td>
-		<td>${vo.totalPrice }</td>
-		<td>${vo.qty }</td>
+		<td><img src="${ctx}/img/${carList.get(i).img }" style="width:100px;height:50px;object-fit:cover"></td>
+		<td>${carList.get(i).name }</td>
+		<td>${list.get(i).rday }</td>
+		<td>${list.get(i).dday }</td>
+		<td>${list.get(i).totalPrice }</td>
+		<td>${list.get(i).qty }</td>
 		<td>
-		<c:if test="${vo.usein ==1 }">O</c:if>
-		<c:if test="${vo.usein !=1 }">X</c:if>
+		<c:if test="${list.get(i).usein ==1 }">O</c:if>
+		<c:if test="${list.get(i).usein !=1 }">X</c:if>
 		</td>
 		<td>
-		<c:if test="${vo.usewifi ==1 }">O</c:if>
-		<c:if test="${vo.usewifi !=1 }">X</c:if>
+		<c:if test="${list.get(i).usewifi ==1 }">O</c:if>
+		<c:if test="${list.get(i).usewifi !=1 }">X</c:if>
 		</td>
 		<td>
-		<c:if test="${vo.usenavi ==1 }">O</c:if>
-		<c:if test="${vo.usenavi !=1 }">X</c:if>
+		<c:if test="${list.get(i).usenavi ==1 }">O</c:if>
+		<c:if test="${list.get(i).usenavi !=1 }">X</c:if>
 		</td>
 		<td>
-		<c:if test="${vo.useseat ==1 }">O</c:if>
-		<c:if test="${vo.useseat !=1 }">X</c:if>
+		<c:if test="${list.get(i).useseat ==1 }">O</c:if>
+		<c:if test="${list.get(i).useseat !=1 }">X</c:if>
 		</td>
-		<td><button class="btn btn-danger">삭제</button></td>
+		<td>
+		<form action="${ctx}/deleteRes.do" method="post">
+		<input type="hidden" value="${list.get(i).no}" name="no">
+		<input type="hidden" value="${list.get(i).reserve_seq}" name="reserve_seq">
+		<input type="hidden" value="${list.get(i).qty}" name="qty">
+		<button class="btn btn-danger">삭제</button>
+		</form>
+		</td>
 	</tr>
-</table>
 </c:forEach>
+</table>
+</c:if>

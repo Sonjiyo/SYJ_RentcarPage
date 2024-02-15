@@ -33,7 +33,7 @@ public class UserDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				int num =rs.getInt("num");
+				int num =rs.getInt("no");
 				String id = rs.getString("id");
 				String pw = rs.getString("pw");
 				String email = rs.getString("email");
@@ -82,5 +82,45 @@ public class UserDAO {
 		return false;
 	}
 	
+	public void joinUser(User user) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "INSERT INTO member VALUES (null,?,?,?,?,?,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getId());
+			ps.setString(2, user.getPw());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getTel());
+			ps.setString(5, user.getHobby());
+			ps.setString(6, user.getJob());
+			ps.setInt(7, user.getAge());
+			ps.setString(8, user.getInfo());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
 	
+	public boolean idCheck(String id) {
+		ArrayList<User> list = getUserList();
+		boolean check = false;
+		for(User u : list) {
+			if(u.getId().equals(id)) check = true;
+		}
+		return check;
+	}
+	
+	public User getOneUser(String id) {
+		ArrayList<User> list = getUserList();
+		for(int i =0; i<list.size(); i++) {
+			if(list.get(i).getId().equals(id)) return list.get(i);
+		}
+		return null;
+	}
 }
