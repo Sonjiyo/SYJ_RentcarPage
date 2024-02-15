@@ -146,4 +146,21 @@ public class RentCarDAO {
 		}
 	}
 
+	public void deleteRentcar(int no) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "delete from rentcar where no=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
+	
 }

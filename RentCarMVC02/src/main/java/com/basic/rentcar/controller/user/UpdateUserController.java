@@ -16,14 +16,13 @@ public class UpdateUserController implements Controller{
 	public String requestHandler(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String ctx = req.getContextPath();
-		HttpSession session = req.getSession();
-		String id = (String)session.getAttribute("log");
+		String id = req.getParameter("id");
 		String[] hobbyList = req.getParameterValues("hobby");
 		String hobby= "";
-		for(String h : hobbyList) {
-			hobby+=h+",";
+		for(int i=0; i<hobbyList.length; i++) {
+			hobby+=hobbyList[i]+",";
 		}
-		hobby = hobby.substring(hobby.length()-1);
+		hobby = hobby.substring(0,hobby.length()-1);
 		String job = req.getParameter("job");
 		int age = Integer.parseInt(req.getParameter("age"));
 		String info = req.getParameter("info");

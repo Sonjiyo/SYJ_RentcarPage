@@ -6,7 +6,10 @@
 	<table class="table table-bordered w-75 mx-auto">
 		<tr>
 			<th class="p-3 table-dark" style="width:25%">아이디</th>
-			<td class="p-3">${vo.id}</td>
+			<td class="p-3">
+			${vo.id}
+			<input type="hidden" name="id" value="${ vo.id}">
+			</td>
 		</tr>
 		<tr>
 			<th class="p-3 table-dark">패스워드</th>
@@ -60,7 +63,7 @@
 		<tr>
 			<td colspan="2">
 			<input type="button" value="정보수정" class="btn btn-dark" onclick="sendForm(form, ${vo.pw})">
-			<input type="button" value="회원탈퇴" id="delete" class="btn btn-danger" onclick="deleteUser(form, ${vo.pw}, '${ctx }')"></td>
+			<input type="button" value="회원탈퇴" id="delete" class="btn btn-danger" onclick="deleteUser(form, ${vo.pw}, '${ctx }', ${vo.id})"></td>
 		</tr>
 	</table>
 </form>

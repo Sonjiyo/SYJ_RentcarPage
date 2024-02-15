@@ -2,14 +2,19 @@ package com.basic.rentcar.frontController;
 
 import java.util.HashMap;
 
+import com.basic.rentcar.controller.rentcar.AdminCarListController;
 import com.basic.rentcar.controller.rentcar.CarInfoController;
 import com.basic.rentcar.controller.rentcar.CarListController;
+import com.basic.rentcar.controller.rentcar.DeleteRentcarController;
 import com.basic.rentcar.controller.rentcar.DeleteResController;
 import com.basic.rentcar.controller.rentcar.InsertCarController;
+import com.basic.rentcar.controller.rentcar.RentcarInfoController;
 import com.basic.rentcar.controller.rentcar.ReservateCarController;
 import com.basic.rentcar.controller.rentcar.SelectCarOptionController;
+import com.basic.rentcar.controller.rentcar.UpdateRentcarController;
 import com.basic.rentcar.controller.rentcar.UploadCarImgController;
 import com.basic.rentcar.controller.rentcar.UserReserveListController;
+import com.basic.rentcar.controller.user.AdminUserListController;
 import com.basic.rentcar.controller.user.DeleteUserController;
 import com.basic.rentcar.controller.user.JoinUserController;
 import com.basic.rentcar.controller.user.LoginCheckController;
@@ -41,6 +46,11 @@ public class HandlerMapping {
 		mappings.put("/updateUser.do", new UpdateUserController());
 		mappings.put("/insertCar.do", new InsertCarController());
 		mappings.put("/uploadCarImg.do", new UploadCarImgController());
+		mappings.put("/adminUserList.do", new AdminUserListController());
+		mappings.put("/adminCarList.do", new AdminCarListController());
+		mappings.put("/updateRentcarInfo.do", new RentcarInfoController());
+		mappings.put("/updateRentcar.do", new UpdateRentcarController());
+		mappings.put("/deleteRentcar.do", new DeleteRentcarController());
 	}
 	
 	public Controller getController(String key) {

@@ -20,7 +20,8 @@ public class DeleteUserController implements Controller{
 	public String requestHandler(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		String id = (String)session.getAttribute("log");
+		String id = req.getParameter("id");
+
 		String ctx = req.getContextPath();
 		
 		UserDAO.getInstance().deleteUser(id);
@@ -30,7 +31,9 @@ public class DeleteUserController implements Controller{
 			ReservationDAO.getInstance().deleteResevation(r.getReserve_seq());
 		}
 		
-		session.setAttribute("log", null);
+		if(!((String)session.getAttribute("log")).equals("admin")) {
+			session.setAttribute("log", null);			
+		}
 		
 		return "<script>alert('회원탈퇴 완료');location.href='"+ctx+"/main.do'</script>";
 	}

@@ -50,7 +50,7 @@ function sendForm(form, Userpw){
 	
 	form.submit();
 }
-function deleteUser(form, Userpw, ctx){
+function deleteUser(form, Userpw, ctx, id){
 	let pw = form.pw.value;
 	
 	pwMsg.textContent='';
@@ -66,5 +66,5 @@ function deleteUser(form, Userpw, ctx){
 		}
 	}
 	
-	location.href= ctx+'/deleteUser.do';
+	location.href= ctx+'/deleteUser.do?id='+id;
 }

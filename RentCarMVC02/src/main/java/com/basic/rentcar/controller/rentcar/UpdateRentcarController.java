@@ -8,15 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.basic.rentcar.frontController.Controller;
 
-public class InsertCarController implements Controller{
+public class UpdateRentcarController implements Controller{
 
 	@Override
 	public String requestHandler(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if(req.getParameter("name")==null) {
-			req.setAttribute("content", "rentcar/insertRentcar.jsp");
-			return "main";
-		}
+		
 		return null;
 	}
 
