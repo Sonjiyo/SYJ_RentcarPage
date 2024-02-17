@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file= "../util.jsp" %>
 <h2 class="my-5">차량 추가하기</h2>
-<form action="${ctx}/insertCar.do" method="post">
+<form action="${ctx}/insertCar.do" method="post" enctype="multipart/form-data">
 	<table class="table table-bordered w-75 mx-auto">
 		<tr>
 			<th class="p-3 table-dark" style="width:25%">차량 이름</th>

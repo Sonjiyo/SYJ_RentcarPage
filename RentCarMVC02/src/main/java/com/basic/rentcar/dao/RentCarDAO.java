@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.basic.rentcar.util.DBUtil;
 import com.basic.rentcar.vo.Rentcar;
+import com.basic.rentcar.vo.User;
 
 public class RentCarDAO {
 	private RentCarDAO() {}
@@ -155,6 +156,31 @@ public class RentCarDAO {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, no);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(conn, ps, rs);
+		}
+	}
+	
+	public void insertRentcar(Rentcar car) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		Connection conn = DBUtil.getConnection();
+		String sql = "INSERT INTO rentcar VALUES (null,?,?,?,?,?,?,?,?)";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, car.getName());
+			ps.setInt(2, car.getCategory());
+			ps.setInt(3, car.getPrice());
+			ps.setInt(4, car.getUsepeople());
+			ps.setInt(5, car.getTotal_qty());
+			ps.setString(6, car.getCompany());
+			ps.setString(7, car.getImg());
+			ps.setString(8, car.getInfo());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

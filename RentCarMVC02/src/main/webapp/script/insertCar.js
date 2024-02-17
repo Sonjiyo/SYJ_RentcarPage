@@ -4,6 +4,7 @@ let categoryMsg = document.querySelector('.category');
 let priceMsg = document.querySelector('.price');
 let usepeopleMsg = document.querySelector('.usepeople');
 let total_qtyMsg = document.querySelector('.total_qty');
+let imgMsg = document.querySelector('.img');
 
 function sendForm(form){
 	let name = form.name.value;
@@ -11,6 +12,7 @@ function sendForm(form){
 	let price = form.price.value;
 	let usepeople = form.usepeople.value;
 	let total_qty = form.total_qty.value;
+	let img = form.img.value;
 		
 	nameMsg.textContent = '';
 	companyMsg.textContent = '';
@@ -18,10 +20,13 @@ function sendForm(form){
 	priceMsg.textContent = '';
 	usepeopleMsg.textContent = '';
 	total_qtyMsg.textContent = '';
+	imgMsg.textContent = '';
 		
 	let category = document.querySelectorAll('.categoryCheck');
 	
 	let categoryChecked = false;
+	
+
 	
 	for(let i=0; i<category.length; i++){
 		if(category[i].checked) categoryChecked = true;
@@ -31,6 +36,18 @@ function sendForm(form){
 		nameMsg.textContent = '이름을 입력해주세요';
 		form.name.focus();
 		return;
+	}
+	if(img.length==0){
+		imgMsg.textContent = '이미지를 선택해주세요';
+		form.img.focus();
+		return;
+	}else{
+		let file = img.split('.')[1];
+		if(file != 'png' && file != 'jpg' && file != 'jpeg'){
+			imgMsg.textContent = '이미지 파일을 선택해주세요';
+			form.img.focus();
+			return;
+		}
 	}
 	if(company.length==0){
 		companyMsg.textContent = '차량 회사를 입력해주세요';
@@ -43,6 +60,7 @@ function sendForm(form){
 		return;
 	}	
 	
+	
 	if(price.length==0){
 		priceMsg.textContent = '렌트 가격을 입력해주세요';
 		form.price.focus();
@@ -54,6 +72,7 @@ function sendForm(form){
 			return;
 		}
 	}
+	
 	if(usepeople.length==0){
 		usepeopleMsg.textContent = '승차 인원을 입력해주세요';
 		form.usepeople.focus();

@@ -12,7 +12,10 @@
 			<tr>
 				<th style="width:35%">대여기간</th>
 				<td>
-					<input type="range" min="1" max="7" name="dday">
+					<div class="range-control">
+    					<input id="inputRange" type="range" min="1" max="7" name="dday">
+    					<p id="inputRangeText">1</p>
+  					</div>
 				</td>
 			</tr>	
 			<tr>
@@ -115,4 +118,22 @@
 		.then(getResult)
 		.catch(()=>alert('error'));
 	}	
+	
+	document.querySelector('#inputRange').addEventListener('input', ()=>{
+		let control = document.querySelector('#inputRange');
+	    let controlMin = 1;
+	    let controlMax = 7;
+	    let controlVal = control.value;
+	    let controlThumbWidth = 20;
+
+		let range = controlMax - controlMin;
+	  
+		let position = ((controlVal - controlMin) / range) * 100;
+		let positionOffset = Math.round(controlThumbWidth * position / 100) - (controlThumbWidth / 2);
+		let output = document.querySelector('#inputRangeText');
+	  
+	  	output.textContent=controlVal;
+	  	output.style.left='calc(' + position + '% - ' + positionOffset + 'px)';
+
+	})
 </script>
