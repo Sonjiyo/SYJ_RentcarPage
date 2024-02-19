@@ -102,7 +102,7 @@ let age = form.age.value;
 		return;
 	}else{
 		if(age<18 || age>100){
-			ageMsg.textContent = '18세 이상 100세 미만 가입 가능합니다';
+			ageMsg.textContent = '18세 이상 100세 이하 가입 가능합니다';
 			form.age.value='';
 			form.age.focus();
 			return;

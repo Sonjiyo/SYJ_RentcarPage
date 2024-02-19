@@ -63,7 +63,7 @@
 		<tr>
 			<td colspan="2">
 			<input type="button" value="정보수정" class="btn btn-dark" onclick="sendForm(form, ${vo.pw})">
-			<input type="button" value="회원탈퇴" id="delete" class="btn btn-danger" onclick="deleteUser(form, ${vo.pw}, '${ctx }', ${vo.id})"></td>
+			<input type="button" value="회원탈퇴" id="delete" class="btn btn-danger" onclick="deleteUser(form, ${vo.pw}, '${ctx }', '${vo.id}')"></td>
 		</tr>
 	</table>
 </form>
